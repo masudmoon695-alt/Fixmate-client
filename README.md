@@ -1,97 +1,185 @@
-# FixMate Client (Frontend)
+<div align="center">
 
-**FixMate** — a smart device & home appliance repair booking platform. Customers book vetted technicians for smartphone, laptop, AC, refrigerator, TV, washing machine and electrical repair, and pay only after the job is completed.
+# 🔧 FixMate
 
-- **Framework:** Next.js 15 (App Router, JavaScript)
-- **Auth:** BetterAuth (MongoDB adapter) + short-lived Express JWT via `app/api/token`
-- **Styling:** Tailwind CSS + shadcn-style UI components
-- **Toasts:** sonner
-- **Charts:** recharts
-- **Icons:** lucide-react
-- **Image upload:** ImgBB (via `components/shared/image-upload`)
-- **Payments:** Stripe Checkout (server creates session; client only redirects + verifies)
+**On-demand smart device & home appliance repair booking platform**
 
-## Live URL
+Book trusted, verified technicians for your smartphone, laptop, AC, refrigerator, TV, washing machine or electrical fix, and pay only after the job is completed.
 
-- Frontend (placeholder until deployed): `https://your-fixmate-domain.com` (set `NEXT_PUBLIC_URL` / `NEXT_PUBLIC_API_URL` accordingly)
+[Live Demo](https://your-frontend.vercel.app) · [Backend Repo](https://github.com/masudmoon695-alt/YOUR-BACKEND-REPO) · [Report Bug](https://github.com/masudmoon695-alt/Fixmate-client/issues)
 
-## Test accounts (seed / placeholder)
+</div>
 
-Credentials should be filled from the seeded data in the backend `server` folder.
+---
 
-| Role | Email | Password |
+## 📸 Screenshots
+
+| Home (Dark) | Services | Dashboard |
 |---|---|---|
-| Admin | `admin@fixmate.com` | `Fixmate@1234` |
-| Technician | `technician@fixmate.com` | `Fixmate@1234` |
-| Customer | `customer@fixmate.com` | `Fixmate@1234` |
+| ![Home](./screenshots/home.png) | ![Services](./screenshots/services.png) | ![Dashboard](./screenshots/dashboard.png) |
 
-## Key features
+## ✨ Features
 
-- Public pages: Home, Services (+ filters & pagination server-side), Service Details, About
-- Auth: Sign Up / Sign In with validated forms (customer or technician role only), role-based redirect
-- Customer: dashboard with stats + charts, booking management (cancel, pay after completion), payment history
-- Technician: add/edit/delete services, availability toggle, incoming repair requests workflow (accept / reject / start / complete)
-- Admin: user & service management, booking oversight, transactions & revenue
-- Profile: edit name, phone, area, bio, photo (ImgBB)
-- Payments: Stripe Checkout redirect + success/cancel pages with session verification
-- Global: skeletons, error/not-found boundaries, empty states, confirm modals, sonner toasts
+### 👤 Customer
+- Browse and search services by category (Smartphone, Laptop & PC, AC, Refrigerator, TV, Electrical, etc.)
+- View service details with technician info, price, duration and service area
+- Book a service with preferred date and address
+- Track booking status (Requested → Accepted → Completed)
+- Online payment, with a payment history page
+- ⭐ **Rate & Review** a technician (1–5 stars + short review) after a paid booking
+- 📄 **Download PDF invoice** for paid bookings
+- Cancel pending bookings
+- Profile settings with photo upload
 
-## Setup
+### 🛠️ Technician
+- Add new services (sent for admin approval)
+- Manage own services and incoming requests
+- Accept, update and complete bookings
+- Profile with service area and skills
+
+### 🛡️ Admin
+- Review and approve or reject technician services
+- Manage users and services
+- Monitor transactions
+
+### 🎨 General
+- 🌗 Smooth **dark / light theme** toggle (public pages and dashboards)
+- Role-based protected dashboards (customer, technician, admin)
+- Fully responsive (mobile, tablet, desktop)
+- Skeleton loaders, toast notifications, graceful error handling
+- Image upload via ImgBB (through a secure server-side API route)
+
+## 🧰 Tech Stack
+
+| Category | Technology |
+|---|---|
+| Framework | Next.js (App Router) |
+| Language | JavaScript / TypeScript |
+| Styling | Tailwind CSS, CSS variables (theme tokens) |
+| Auth | Better Auth |
+| Theme | next-themes |
+| Icons | lucide-react |
+| Image hosting | ImgBB |
+| Deployment | Vercel |
+
+> Update this table if your project uses different libraries (for example, a different auth library or UI kit).
+
+## 📁 Project Structure
+
+```
+Frontend/
+├── app/
+│   ├── api/
+│   │   ├── auth/              # Auth endpoints
+│   │   └── upload-image/      # Server-side ImgBB upload
+│   ├── dashboard/
+│   │   ├── customer/          # Bookings, payments
+│   │   ├── technician/        # Add service, my services, requests
+│   │   ├── admin/             # Manage users, services, transactions
+│   │   └── profile/           # Profile settings (all roles)
+│   ├── services/              # Service list and details
+│   └── page.js                # Home page
+├── components/                # Reusable UI components
+├── lib/                       # API helpers and utilities
+├── public/                    # Static assets
+├── middleware.js              # Route protection
+├── agents.md                  # AI agent rules for this project
+└── next.config.mjs
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18 or later
+- npm, yarn or pnpm
+- A running instance of the FixMate backend (see the backend repo)
+
+### Installation
 
 ```bash
-cp .env.example .env.local
-# fill in .env.local (see below)
+# 1. Clone the repository
+git clone https://github.com/masudmoon695-alt/Fixmate-client.git
+cd Fixmate-client
+
+# 2. Install dependencies
 npm install
+
+# 3. Create the environment file
+cp .env.example .env.local
+
+# 4. Start the development server
 npm run dev
 ```
 
-### Environment variables (`.env.local`)
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-```
+### Environment Variables
+
+Create a `.env.local` file in the project root:
+
+```env
+# Backend API
 NEXT_PUBLIC_API_URL=http://localhost:5000
-NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3000
-NEXT_PUBLIC_IMGBB_API_KEY=
-NEXT_PUBLIC_URL=http://localhost:3000
 
-BETTER_AUTH_SECRET=
+# Auth
 BETTER_AUTH_URL=http://localhost:3000
+BETTER_AUTH_SECRET=your_long_random_secret
 
-JWT_SECRET=<same as backend server JWT_SECRET>
-
-MONGODB_URI=<same database the backend uses>
-DB_NAME=<same database name>
-
-TRUSTED_ORIGINS=http://localhost:3000
+# Image upload (server-side only, no NEXT_PUBLIC_ prefix)
+IMGBB_API_KEY=your_imgbb_api_key
 ```
 
-- Never commit `.env.local` (already git-ignored).
-- Backend runs at `http://localhost:5000`; frontend at `http://localhost:3000`.
+> ⚠️ Never commit `.env.local`. Keep secret keys out of any `NEXT_PUBLIC_` variable.
 
-## Key routes
+### Available Scripts
 
-| Route | Access |
+| Command | Description |
 |---|---|
-| `/`, `/services`, `/services/[id]`, `/about` | Public |
-| `/sign-in`, `/sign-up` | Public |
-| `/payment/success`, `/payment/cancel` | Customer |
-| `/dashboard/customer`, `/dashboard/customer/bookings`, `/dashboard/customer/payments` | Customer |
-| `/dashboard/technician`, `/dashboard/technician/add-service`, `/dashboard/technician/my-services`, `/dashboard/technician/requests` | Technician |
-| `/dashboard/admin`, `/dashboard/admin/users`, `/dashboard/admin/services`, `/dashboard/admin/bookings`, `/dashboard/admin/transactions` | Admin |
-| `/dashboard/profile` | All logged-in users |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm start` | Run the production build |
+| `npm run lint` | Run ESLint |
 
-## Notes
+## 🔐 Roles & Access
 
-- Auth token for the Express API is fetched through BetterAuth session → `app/api/token` → JWT, attached via `lib/api.js`.
-- Payment flow: Stripe Checkout session created by the Express server; client only redirects + verifies via `GET /api/payments/verify`.
-- Server-side filters/sorting/pagination for services happen through URL search params (`?search=&category=&serviceMode=&sort=&page=`).
+| Role | Access |
+|---|---|
+| Customer | Browse and book services, pay, review, download invoices |
+| Technician | Add services, manage requests |
+| Admin | Approve services, manage users and transactions |
 
-## Packages used
+Visiting a dashboard that belongs to another role redirects the user to their own dashboard with a "Forbidden" message. Reloading any route never redirects a logged-in user to login while the session is still loading.
 
-- `next`, `react`, `react-dom`
-- `@better-auth/mongo-adapter`, `better-auth`, `mongodb`
-- `jsonwebtoken`
-- `tailwindcss`, `autoprefixer`, `postcss`
-- `recharts`
-- `sonner`
-- `lucide-react`
-- ImgBB (external image host)
+## ☁️ Deployment (Vercel)
+
+1. Push the repository to GitHub
+2. Import it in [Vercel](https://vercel.com) (Framework: Next.js)
+3. Add the environment variables listed above, with `NEXT_PUBLIC_API_URL` set to your deployed backend URL
+4. Deploy, then update the backend's `CLIENT_URL` with the frontend URL so CORS works
+
+## 🗺️ Roadmap
+- [ ] Real-time booking notifications
+- [ ] Technician availability calendar
+- [ ] In-app chat between customer and technician
+- [ ] Multi-language support (Bangla / English)
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the project
+2. Create your branch: `git checkout -b feat/amazing-feature`
+3. Commit your changes: `git commit -m "feat: add amazing feature"`
+4. Push to the branch: `git push origin feat/amazing-feature`
+5. Open a Pull Request
+
+## 👨‍💻 Author
+
+**Masud**
+- GitHub: [@masudmoon695-alt](https://github.com/masudmoon695-alt)
+
+---
+
+<div align="center">
+Made with ❤️ in Bangladesh
+</div>
