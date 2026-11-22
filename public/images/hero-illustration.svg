@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2928" />
+      <stop offset="100%" stop-color="#071b1a" />
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="100%" stop-color="#0d9488" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad)" />
+
+  <!-- Soft glow circles -->
+  <circle cx="240" cy="220" r="180" fill="#14b8a6" opacity="0.12" filter="blur(40px)" />
+  <circle cx="560" cy="380" r="160" fill="#f59e0b" opacity="0.08" filter="blur(40px)" />
+
+  <!-- Laptop Base & Screen -->
+  <rect x="220" y="160" width="360" height="230" rx="16" fill="#133534" stroke="#1d4d4b" stroke-width="3" />
+  <rect x="240" y="180" width="320" height="190" rx="8" fill="#091b1a" />
+  
+  <!-- Circuit grid on laptop screen -->
+  <path d="M 260 210 h 80 v 40 h 50 M 340 250 v 50 h 60 M 460 210 h -60 v 30 h -30 M 500 290 h -50 v -30" stroke="#14b8a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.4" fill="none" />
+  <circle cx="340" cy="210" r="4" fill="#14b8a6" />
+  <circle cx="390" cy="250" r="4" fill="#fbbf24" />
+  <circle cx="450" cy="300" r="4" fill="#14b8a6" />
+
+  <!-- Laptop Bottom Chassis -->
+  <path d="M 180 390 L 220 390 L 580 390 L 620 390 C 625 390 628 395 625 400 L 610 415 C 606 420 600 422 590 422 L 210 422 C 200 422 194 420 190 415 L 175 400 C 172 395 175 390 180 390 Z" fill="#1a4341" stroke="#235c59" stroke-width="2" />
+  <line x1="360" y1="395" x2="440" y2="395" stroke="#133534" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Smartphone -->
+  <g transform="translate(140, 240)">
+    <rect x="0" y="0" width="110" height="210" rx="20" fill="#0d2423" stroke="#2dd4bf" stroke-width="2.5" />
+    <rect x="8" y="14" width="94" height="182" rx="12" fill="#071716" />
+    <rect x="42" y="6" width="26" height="4" rx="2" fill="#2dd4bf" opacity="0.6" />
+    <!-- Pulse check icon on phone -->
+    <path d="M 25 105 h 15 l 8 -20 l 12 40 l 10 -25 l 6 10 h 16" stroke="url(#amberGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+
+  <!-- Stylized Crossed Tools (Wrench & Screwdriver) -->
+  <g transform="translate(480, 260) scale(1.1)">
+    <!-- Glow -->
+    <circle cx="45" cy="45" r="55" fill="#14b8a6" opacity="0.15" />
+    
+    <!-- Screwdriver (slanted) -->
+    <g transform="rotate(-30, 45, 45)">
+      <rect x="42" y="-15" width="6" height="70" rx="3" fill="#94a3b8" />
+      <polygon points="41,55 49,55 47,65 43,65" fill="#64748b" />
+      <rect x="39" y="-45" width="12" height="35" rx="5" fill="url(#amberGrad)" />
+      <line x1="42" y1="-40" x2="42" y2="-15" stroke="#b45309" stroke-width="1.5" />
+      <line x1="48" y1="-40" x2="48" y2="-15" stroke="#b45309" stroke-width="1.5" />
+    </g>
+
+    <!-- Wrench (slanted) -->
+    <g transform="rotate(35, 45, 45)">
+      <rect x="40" y="-15" width="10" height="85" rx="5" fill="url(#tealGrad)" />
+      <!-- Top wrench head -->
+      <path d="M 33 -15 C 33 -32 57 -32 57 -15 C 57 -10 54 -6 50 -3 L 50 -15 L 40 -15 L 40 -3 C 36 -6 33 -10 33 -15 Z" fill="url(#tealGrad)" />
+      <!-- Bottom ring head -->
+      <circle cx="45" cy="72" r="11" fill="url(#tealGrad)" />
+      <circle cx="45" cy="72" r="5" fill="#0f2928" />
+    </g>
+  </g>
+
+  <!-- Floating Sparkles / Particles -->
+  <circle cx="210" cy="190" r="3" fill="#fbbf24" />
+  <circle cx="600" cy="210" r="4" fill="#2dd4bf" />
+  <circle cx="620" cy="340" r="2.5" fill="#fbbf24" />
+  <circle cx="180" cy="470" r="3.5" fill="#2dd4bf" />
+</svg>
