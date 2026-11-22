@@ -6,17 +6,11 @@
 
 Book trusted, verified technicians for your smartphone, laptop, AC, refrigerator, TV, washing machine or electrical fix, and pay only after the job is completed.
 
-[Live Demo](https://your-frontend.vercel.app) · [Backend Repo](https://github.com/masudmoon695-alt/YOUR-BACKEND-REPO) · [Report Bug](https://github.com/masudmoon695-alt/Fixmate-client/issues)
+[Live Demo](https://fixmate-client-alpha.vercel.app) · [Backend Repo](https://github.com/masudmoon695-alt/Fixmate-server) · [Report Bug](https://github.com/masudmoon695-alt/Fixmate-client/issues)
 
 </div>
 
 ---
-
-## 📸 Screenshots
-
-| Home (Dark) | Services | Dashboard |
-|---|---|---|
-| ![Home](./screenshots/home.png) | ![Services](./screenshots/services.png) | ![Dashboard](./screenshots/dashboard.png) |
 
 ## ✨ Features
 
@@ -64,6 +58,14 @@ Book trusted, verified technicians for your smartphone, laptop, AC, refrigerator
 
 > Update this table if your project uses different libraries (for example, a different auth library or UI kit).
 
+## 🔗 Links
+
+| | URL |
+|---|---|
+| 🌐 Live site | https://fixmate-client-alpha.vercel.app |
+| 💻 Frontend repo | https://github.com/masudmoon695-alt/Fixmate-client |
+| ⚙️ Backend repo | https://github.com/masudmoon695-alt/Fixmate-server |
+
 ## 📁 Project Structure
 
 ```
@@ -92,7 +94,7 @@ Frontend/
 ### Prerequisites
 - Node.js 18 or later
 - npm, yarn or pnpm
-- A running instance of the FixMate backend (see the backend repo)
+- A running instance of the [FixMate backend](https://github.com/masudmoon695-alt/Fixmate-server)
 
 ### Installation
 
@@ -155,7 +157,7 @@ Visiting a dashboard that belongs to another role redirects the user to their ow
 1. Push the repository to GitHub
 2. Import it in [Vercel](https://vercel.com) (Framework: Next.js)
 3. Add the environment variables listed above, with `NEXT_PUBLIC_API_URL` set to your deployed backend URL
-4. Deploy, then update the backend's `CLIENT_URL` with the frontend URL so CORS works
+4. Deploy, then update the backend's `CLIENT_URL` with `https://fixmate-client-alpha.vercel.app` so CORS works
 
 ## 🗺️ Roadmap
 - [ ] Real-time booking notifications
